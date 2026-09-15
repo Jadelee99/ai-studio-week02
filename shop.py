@@ -8,9 +8,17 @@ class Customer:
             return 0.03
     def summary(self):
         return f"[{self.grade}]{self.name}(포인트: {self.points:,})"
-c1=Customer()
-c1.name="김서강"
-c1.grade="vip"
-c1.points=0
-c1.add_points(10000)
-print(c1.summary())
+class Order:
+    def add_item(self,name,price):
+        self.item.append((name,price))
+    def total_price(self):
+        raw_total=0
+        for item in self.items:
+            raw_total+=item[1]
+        discount_rate=self.customer.get_discount_rate()
+        final_price=int(raw_total*(1-discount_rate))
+        return final_price
+    def pay(self):
+        final_price=self.total_price()
+        self.customer.add_points(final_price)
+        return final_price
